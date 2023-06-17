@@ -1,0 +1,31 @@
+%% SPA diagram
+sequenceDiagram
+participant Browser
+participant Sever
+
+
+Browser ->>  Sever : GET https://studies.cs.helsinki.fi/exampleapp/spa
+activate Sever
+Sever -->> Browser : HTML document
+deactivate Sever
+
+Browser ->> Sever : GET https://studies.cs.helsinki.fi/exampleapp/main.css
+activate Sever
+Sever -->> Browser : The CSS file
+deactivate Sever
+
+Browser ->> Sever : GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+activate Sever
+Sever -->> Browser : The javascript file
+deactivate Sever
+
+Note right of Browser : Browser starts executing Javascript code in spa.js to fetch data from sever 
+
+Browser ->> Sever : GET https://studies.cs.helsinki.fi/exampleapp/data.json
+activate Sever
+Sever -->> Browser : The data.json file
+deactivate Sever
+
+Note right of Browser : Browser create node list and render data.json
+
+

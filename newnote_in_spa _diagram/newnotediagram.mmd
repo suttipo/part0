@@ -1,19 +1,9 @@
-%% Post https://studies.cs.helsinki.fi/exampleapp/new_note
 sequenceDiagram
-participant Browser
-participant Sever
+    participant Browser
+    participant Sever
 
-Browser ->> Sever : Post  https://studies.cs.helsinki.fi/exampleapp/new_note
-Note over Browser,Sever: Sever add data from body of Post to data.json
-Sever -->> Browser : responds status code 302 url redirect location /exampleapp/notes
-
-Browser ->> Sever : Get https://studies.cs.helsinki.fi/exampleapp/notes
-Sever -->> Browser : html document
-Browser ->> Sever : Get https://studies.cs.helsinki.fi/exampleapp/main.css
-Sever -->> Browser : The css file 
-Browser ->> Sever : Get https://studies.cs.helsinki.fi/exampleapp/main.js
-Sever -->> Browser : The javascript file 
-Note over Browser,Sever: Browser execute javascript file and fetch data.json from Sever
-Browser  ->> Sever: Get https://studies.cs.helsinki.fi/exampleapp/data.json
-Sever -->> Browser: data.json file
-Note over Browser,Sever: render data.json
+    Note over Browser,Sever :In the Browser when click button<br> it create new note and push in array notes <br>then it render new array notes and send request <br> with set status 201 and new note in json format file
+    Browser ->> Sever: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate Sever
+    Sever -->> Browser: data.json {massage:"note create"}
+    deactivate Sever
